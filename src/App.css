@@ -1,38 +1,69 @@
-.App {
-  text-align: center;
+* {
+  transition: all 0.3s;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app {
+  width: 100%;
+  height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#light {
+  background-color: rgb(255, 255, 255);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#dark {
+  background-color: rgb(50, 50, 75);
+}
+#dark .title {
+  color: rgb(190, 202, 24);
 }
 
-.App-link {
-  color: #61dafb;
+#light .title {
+  color: palevioletred;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#light .menu_btn {
+  color: blue;
+}
+
+
+#light td {
+  color: black;
+}
+#dark td {
+  color: rgb(255, 255, 255);
+}
+
+.trending_coins:hover {
+  transform: scale(110%);
+  cursor: pointer;
+}
+
+.coin_search:hover {
+  transform: scale(103%);
+  cursor: pointer;
+}
+
+.btc_price {
+  width: 5%;
+}
+
+.img_coin {
+  width: 10%;
+}
+
+.switch {
+  cursor: pointer;
+}
+
+.mobile_menu ul li {
+  color: rgb(255, 255, 255);
+}
+.mobile_menu ul li:hover {
+  background-color: rgb(141, 137, 145);
+  border-radius: 50px;
+  cursor: pointer;
+}
+.mobile_link {
+  margin-top: 110%;
 }
