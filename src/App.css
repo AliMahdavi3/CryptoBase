@@ -1,3 +1,20 @@
+@font-face {
+  font-family: "myfont";
+  src: url(../public/assets/font/FiraCode-SemiBold.ttf);
+}
+@font-face {
+  font-family: "myfont1";
+  src: url(../public/assets/font/Outfit-SemiBold.ttf);
+}
+@font-face {
+  font-family: "myfont2";
+  src: url(../public/assets/font/Righteous-Regular.ttf);
+}
+
+* {
+  font-family: "myfont1";
+}
+
 
 .app {
   width: 100%;
@@ -14,7 +31,7 @@
 }
 
 #dark {
-  background-color: rgb(50, 50, 75);
+  background-color: rgb(46, 46, 48);
   color: white;
 }
 #dark .title {
