@@ -1,9 +1,35 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CoinItems from './CoinItems';
 import "../App.css"
+import Pagination from 'react-bootstrap/Pagination';
+import { BsFillCaretLeftFill, BsFillCaretRightFill } from "react-icons/bs";
+
 
 const CoinSearch = ({coins}) => {
-  const [search, setSearch] = useState("")
+  let numOfPage = 10;
+  let pageRange = 2;
+  const [search, setSearch] = useState("");
+  const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pages, setPages] = useState([]);
+  const [pageCount, setPageCount] = useState(1);
+
+  useEffect(()=>{
+    let pCount = coins.length / numOfPage;
+    setPageCount(pCount);
+    let pArr = [];
+    for(let i = 1; i <= pCount; i++) pArr = [...pArr, i];
+    setPages(pArr)
+  },[])
+
+  useEffect(()=>{
+    let start = (currentPage * numOfPage)-numOfPage;
+    let end = (currentPage * numOfPage);
+
+    setData(coins.slice(start, end));
+  },[currentPage]);
+
+
   return (
     <div className='container rounded-5 shadow-lg mt-5'>
       <div className='d-flex col-md-flex-row justify-content-between py-4 px-3 text-center '>
@@ -34,7 +60,7 @@ const CoinSearch = ({coins}) => {
 
         <tbody>
           {
-            coins.filter((value)=>{
+            data.filter((value)=>{
               if(search === ""){
                 return value
               }else if (
@@ -48,6 +74,20 @@ const CoinSearch = ({coins}) => {
           }
         </tbody>
       </table>
+      <div dir='ltr' className='col-12 d-flex align-items-center justify-content-center py-5'>
+          <div className={`shadow-lg pagination border-0 px-3 py-3 rounded-5 fw-bold mx-1 pointer ${currentPage == 1 ? "disabled" : ""}`} 
+          onClick={()=>setCurrentPage(currentPage - 1)}><BsFillCaretLeftFill/></div>
+          {
+            pages.map((page, index)=>{
+              return page < currentPage + pageRange && page > currentPage - pageRange ? (
+                  <div className={`shadow-lg pagination border-0 px-3 py-3 rounded-5 fw-bold mx-1 pointer ${currentPage == page ? "text-light mainBackground" : ""}`} 
+                  key={index} onClick={()=>setCurrentPage(page)}>{page}</div>
+              ) : null
+            })
+          }
+          <div className={`shadow-lg pagination border-0 px-3 py-3 rounded-5 fw-bold mx-1 pointer ${currentPage === pageCount ? "disabled" : ""}`} 
+          onClick={()=>setCurrentPage(currentPage + 1)}><BsFillCaretRightFill/></div>
+      </div>
     </div>
   )
 }

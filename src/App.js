@@ -3,13 +3,13 @@ import "./App.css"
 import Navbar from "./layout/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Home from "./page/Home";
-import SignIn from "./page/SignIn";
-import SignUp from "./page/SignUp";
 import Account from "./page/Account";
 import axios from "axios"
 import CoinPage from "./page/CoinPage";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Footer from "./layout/Footer";
+import SignIn from "./page/auth/SignIn";
+import SignUp from "./page/auth/SignUp";
 
 export const ThemeContext = createContext(null);
 
@@ -17,7 +17,7 @@ function App() {
   const [theme, setTheme] = useState("light");
 
   const [coins, setCoins] = useState([])
-  const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=true&locale=en"
+  const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&locale=en"
   
   useEffect(()=>{
     axios.get(url).then((res)=>{

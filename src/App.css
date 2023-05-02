@@ -25,6 +25,10 @@
   cursor: pointer;
 }
 
+.mainBackground {
+  background-color: rgba(84, 7, 209, 0.8);
+}
+
 #light {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
@@ -90,4 +94,19 @@
 
 .email i{
   right: 35%;
+}
+
+.disabled {
+  pointer-events: none !important;
+  opacity: 30%;
+}
+
+@media screen and (max-width: 500px) {
+  .pagination {
+    font-size: 10px;
+  }
+}
+
+.validation {
+  border: 2px solid red;
 }
