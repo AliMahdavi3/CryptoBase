@@ -1,26 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import CoinItems from './CoinItems';
 import "../App.css"
-import Pagination from 'react-bootstrap/Pagination';
 import { BsFillCaretLeftFill, BsFillCaretRightFill } from "react-icons/bs";
 
 
 const CoinSearch = ({coins}) => {
-  let numOfPage = 10;
+  let numOfPage = 30;
   let pageRange = 2;
   const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(2);
   const [pages, setPages] = useState([]);
   const [pageCount, setPageCount] = useState(1);
 
   useEffect(()=>{
-    let pCount = coins.length / numOfPage;
+    let pCount = Math.ceil(coins.length / numOfPage);
     setPageCount(pCount);
     let pArr = [];
     for(let i = 1; i <= pCount; i++) pArr = [...pArr, i];
     setPages(pArr)
-  },[])
+  },[coins])
 
   useEffect(()=>{
     let start = (currentPage * numOfPage)-numOfPage;
@@ -29,15 +28,14 @@ const CoinSearch = ({coins}) => {
     setData(coins.slice(start, end));
   },[currentPage]);
 
-
   return (
     <div className='container rounded-5 shadow-lg mt-5'>
       <div className='d-flex col-md-flex-row justify-content-between py-4 px-3 text-center '>
         <h3 className='fw-bold fs-3'>Search Crypto</h3>
         <form>
           <input 
-          onChange={(e)=>setSearch(e.target.value)} 
           type="text" 
+          onChange={(e)=>setSearch(e.target.value)} 
           className='border border-0 shadow-lg px-3 py-2 w-100 rounded-5'
           placeholder='Search Coin'/>
         </form>
@@ -68,7 +66,8 @@ const CoinSearch = ({coins}) => {
                 ){
                 return value
               }
-            }).map((coin)=>(
+            })
+            .map((coin)=>(
               <CoinItems key={coin.id} coin={coin}/>
             ))
           }

@@ -20,9 +20,9 @@ const CoinItems = ({coin}) => {
         <td>{coin.symbol.toUpperCase()}</td>
         <td className='d-none d-md-table-cell'>
           {coin.price_change_percentage_24h > 0 ? (
-            <p className='text-success'>{coin.price_change_percentage_24h.toFixed(2)}%</p>
+            <p className='text-success'>{coin.price_change_percentage_24h}%</p>
           ) : (
-            <p className='text-danger'>{coin.price_change_percentage_24h.toFixed(2)}%</p>
+            <p className='text-danger'>{coin.price_change_percentage_24h}%</p>
           )}
         </td>
         <td className='d-none d-md-table-cell'>{coin.total_volume.toLocaleString()}</td>

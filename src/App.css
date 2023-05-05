@@ -15,13 +15,12 @@
   font-family: "myfont1";
 }
 
-
 .app {
   width: 100%;
   height: 100%;
 }
 
-.pointer{
+.pointer {
   cursor: pointer;
 }
 
@@ -50,7 +49,6 @@
   color: blue;
 }
 
-
 #light td {
   color: black;
 }
@@ -58,14 +56,17 @@
   color: rgb(255, 255, 255);
 }
 
+
 .trending_coins:hover {
   transform: scale(110%);
   cursor: pointer;
+  transition: 0.5s;
 }
 
 .coin_search:hover {
   transform: scale(103%);
   cursor: pointer;
+  transition: 0.5s;
 }
 
 .btc_price {
@@ -92,7 +93,7 @@
   margin-top: 110%;
 }
 
-.email i{
+.email i {
   right: 35%;
 }
 
